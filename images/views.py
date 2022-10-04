@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views import View
-# Create your views here.
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
-class Image (View):
-    def psot(self, request, *args, **kwargs):
-        pass
+class Image (APIView):
+    def get(self, request, *args, **kwargs):
+        return Response(data={"r": "hi"})
