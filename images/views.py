@@ -20,5 +20,11 @@ class Image (APIView):
 
     def get(self, request, *args, **kwargs):
         serilaizer = ImageSerializer(ImageModel.objects, many=True)
-        time.sleep(10)
-        return Response(serilaizer.data)
+        time.sleep(1)
+        result = serilaizer.data
+
+        # adding localhost to images url
+        for img in result:
+            img['image'] = "http://127.0.0.1:8000" + img['image']
+
+        return Response(result)
